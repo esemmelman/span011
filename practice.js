@@ -3,6 +3,22 @@ const questionsElement = document.querySelector('#questions');
 const scoreElement = document.querySelector('#score');
 let currentQuestions = [];
 
+function fitSelectWidth(select) {
+  const style = getComputedStyle(select);
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  if (!context) return;
+  context.font = style.font;
+  const textWidth = Math.max(...[...select.options].map(option => context.measureText(option.textContent).width));
+  const padding = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+  const arrowSpace = parseFloat(style.fontSize) * 1.1;
+  select.style.width = `${Math.ceil(textWidth + padding + arrowSpace + 8)}px`;
+}
+
+function fitAllSelects() {
+  questionsElement.querySelectorAll('select').forEach(fitSelectWidth);
+}
+
 function renderNewSet() {
   currentQuestions = SpanishSentences.get('exercise1', true);
   questionsElement.replaceChildren();
@@ -27,6 +43,7 @@ function renderNewSet() {
     feedback.className = 'feedback';
     article.append(label, translation, feedback);
     questionsElement.append(article);
+    fitSelectWidth(select);
   });
   questionsElement.querySelector('select').focus();
 }
@@ -52,4 +69,6 @@ document.querySelector('#new-set').addEventListener('click', () => {
   renderNewSet();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+window.addEventListener('displaychange', fitAllSelects);
+document.fonts?.ready.then(fitAllSelects);
 renderNewSet();

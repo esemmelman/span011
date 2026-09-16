@@ -50,3 +50,9 @@ html[data-display="tight"] .practice-actions .action-button{padding:5px 9px;font
 html[data-display="tight"] #check{min-width:120px;padding:7px;font-size:22px}
 html[data-display="tight"] #score{font-size:18px}
 html[data-display="tight"] .version,html[data-display="tight"] #display-info{font-size:11px}
+html[data-display] .word{font-size:var(--word-font-size)}
+html[data-display] .word-column h2{font-size:var(--column-title-size)}
+html[data-display] .exercise-sentences h2{font-size:var(--question-font-size)}
+html[data-display] .feedback{font-size:var(--feedback-font-size)}
+html[data-display] .practice-actions .action-button{font-size:var(--action-font-size)}
+html[data-display] #check{font-size:var(--action-font-size)}
