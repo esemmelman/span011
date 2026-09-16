@@ -18,7 +18,8 @@ function renderNewSet() {
     select.name = select.id;
     select.setAttribute('aria-label', `Missing verb in sentence ${index + 1}`);
     select.add(new Option('', ''));
-    SpanishSentences.shuffle(SpanishSentences.verbs).forEach(verb => select.add(new Option(verb, verb)));
+    const person = ['Yo', 'Tú', 'Ella', 'Nosotros', 'Ellos'].indexOf(question.words[0]);
+    SpanishSentences.shuffle([SpanishSentences.verbs[person], SpanishSentences.verbs[person + 5]]).forEach(verb => select.add(new Option(verb, verb)));
     label.append(select, ` ${question.words[2]}.`);
     const translation = document.createElement('p');
     translation.textContent = question.english;

@@ -9,24 +9,24 @@ const SpanishSentences = (() => {
   // Each row is [Spanish complement, English complement, reason].
   const examples = [
     {
-      ser: [['estudiante', 'a student', 'Identity'], ['artista', 'an artist', 'Identity'], ['de México', 'from Mexico', 'Origin'], ['paciente', 'patient', 'Characteristic'], ['optimista', 'optimistic', 'Characteristic']],
-      estar: [['en casa', 'at home', 'Location'], ['en el museo', 'in the museum', 'Location'], ['feliz', 'happy', 'Feeling'], ['triste', 'sad', 'Feeling'], ['bien', 'well', 'Condition']]
+      ser: [['estudiante', 'a student', 'Identity'], ['artista', 'an artist', 'Identity'], ['de México', 'from Mexico', 'Origin'], ['amable', 'kind', 'Characteristic'], ['inteligente', 'smart', 'Characteristic']],
+      estar: [['en casa', 'at home', 'Location'], ['en la escuela', 'at school', 'Location'], ['feliz', 'happy', 'Feeling'], ['triste', 'sad', 'Feeling'], ['bien', 'well', 'Condition']]
     },
     {
-      ser: [['estudiante', 'a student', 'Identity'], ['guía', 'a guide', 'Identity'], ['de Perú', 'from Peru', 'Origin'], ['amable', 'kind', 'Characteristic'], ['inteligente', 'intelligent', 'Characteristic']],
-      estar: [['en la escuela', 'at school', 'Location'], ['en el mercado', 'at the market', 'Location'], ['de buen humor', 'in a good mood', 'Feeling'], ['de mal humor', 'in a bad mood', 'Feeling'], ['mal', 'unwell', 'Condition']]
+      ser: [['estudiante', 'a student', 'Identity'], ['artista', 'an artist', 'Identity'], ['de Perú', 'from Peru', 'Origin'], ['joven', 'young', 'Characteristic'], ['inteligente', 'smart', 'Characteristic']],
+      estar: [['en clase', 'in class', 'Location'], ['en el parque', 'in the park', 'Location'], ['feliz', 'happy', 'Feeling'], ['triste', 'sad', 'Feeling'], ['mal', 'not well', 'Condition']]
     },
     {
-      ser: [['doctora', 'a doctor', 'Identity'], ['maestra', 'a teacher', 'Identity'], ['de Chile', 'from Chile', 'Origin'], ['curiosa', 'curious', 'Characteristic'], ['generosa', 'generous', 'Characteristic']],
-      estar: [['en el parque', 'in the park', 'Location'], ['en la oficina', 'at the office', 'Location'], ['contenta', 'happy', 'Feeling'], ['preocupada', 'worried', 'Feeling'], ['cansada', 'tired', 'Condition']]
+      ser: [['profesora', 'a teacher', 'Identity'], ['amiga', 'a friend', 'Identity'], ['de Chile', 'from Chile', 'Origin'], ['alta', 'tall', 'Characteristic'], ['simpática', 'nice', 'Characteristic']],
+      estar: [['en la tienda', 'at the store', 'Location'], ['en la cocina', 'in the kitchen', 'Location'], ['contenta', 'happy', 'Feeling'], ['triste', 'sad', 'Feeling'], ['cansada', 'tired', 'Condition']]
     },
     {
-      ser: [['estudiantes', 'students', 'Identity'], ['artistas', 'artists', 'Identity'], ['de Colombia', 'from Colombia', 'Origin'], ['responsables', 'responsible', 'Characteristic'], ['creativos', 'creative', 'Characteristic']],
-      estar: [['en clase', 'in class', 'Location'], ['en la playa', 'at the beach', 'Location'], ['felices', 'happy', 'Feeling'], ['tristes', 'sad', 'Feeling'], ['ocupados', 'busy', 'Condition']]
+      ser: [['estudiantes', 'students', 'Identity'], ['amigos', 'friends', 'Identity'], ['de Colombia', 'from Colombia', 'Origin'], ['altos', 'tall', 'Characteristic'], ['simpáticos', 'nice', 'Characteristic']],
+      estar: [['en la biblioteca', 'in the library', 'Location'], ['en la playa', 'at the beach', 'Location'], ['felices', 'happy', 'Feeling'], ['tristes', 'sad', 'Feeling'], ['cansados', 'tired', 'Condition']]
     },
     {
-      ser: [['médicos', 'doctors', 'Identity'], ['músicos', 'musicians', 'Identity'], ['de España', 'from Spain', 'Origin'], ['altos', 'tall', 'Characteristic'], ['simpáticos', 'friendly', 'Characteristic']],
-      estar: [['en la biblioteca', 'in the library', 'Location'], ['en el restaurante', 'at the restaurant', 'Location'], ['contentos', 'happy', 'Feeling'], ['preocupados', 'worried', 'Feeling'], ['agotados', 'exhausted', 'Condition']]
+      ser: [['profesores', 'teachers', 'Identity'], ['niños', 'children', 'Identity'], ['de España', 'from Spain', 'Origin'], ['bajos', 'short', 'Characteristic'], ['inteligentes', 'smart', 'Characteristic']],
+      estar: [['en el restaurante', 'at the restaurant', 'Location'], ['en el cine', 'at the movies', 'Location'], ['contentos', 'happy', 'Feeling'], ['tristes', 'sad', 'Feeling'], ['enfermos', 'sick', 'Condition']]
     }
   ];
   const all = subjects.flatMap((subject, person) => ['ser', 'estar'].flatMap(verb =>
@@ -35,8 +35,8 @@ const SpanishSentences = (() => {
       words: [subject.es, subject[verb], complement],
       english: `${subject.en} ${subject.am} ${english}.`
     }))));
-  const sectionsKey = 'span011-sections-v3';
-  const historyKey = 'span011-history-v3';
+  const sectionsKey = 'span011-sections-v4';
+  const historyKey = 'span011-history-v4';
   let memory = {};
   let memoryHistory = [];
 

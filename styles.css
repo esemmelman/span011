@@ -4,3 +4,4 @@
 .exercise-links{display:flex;flex-wrap:wrap;gap:18px}
 :focus-visible{outline:4px solid #a45b00;outline-offset:3px}
 article small{display:block;margin-top:12px;font-family:Fraunces,Georgia,serif;font-size:clamp(20px,2vw,28px);text-transform:capitalize}
+.usage-guide{padding:12px 0 28px;border-bottom:2px solid var(--line);font-size:clamp(24px,2.6vw,34px);line-height:1.35}
