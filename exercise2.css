@@ -1,0 +1,53 @@
+main{height:100dvh;display:flex;flex-direction:column;padding:12px 20px}
+.exercise-sentences{padding:8px 0 0;text-align:center}
+.exercise-sentences h2{margin:0;font-family:"DM Sans",Arial,sans-serif;font-size:clamp(32px,4.2vw,56px);font-weight:700;line-height:1}
+.exercise-sentences h2.correct{color:#17603a}
+.exercise-sentences h2.incorrect{color:#922219}
+.feedback{display:block;min-height:1.4em;margin-top:6px;font-family:"DM Sans",Arial,sans-serif;font-size:clamp(32px,4.2vw,56px);font-weight:700;line-height:1.1;white-space:pre-line}
+.feedback.correct{color:#17603a}
+.feedback.incorrect{color:#922219}
+.feedback.prompt{font-size:clamp(18px,2vw,24px)}
+.feedback:empty{display:none}
+.word-bank{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;flex:1;min-height:0;max-height:520px;margin:8px 0}
+.word-column{display:flex;flex-direction:column;min-width:0;padding:10px;border:2px solid var(--green);border-radius:10px}
+.word-column h2{min-height:1.1em;margin:0 0 4px;font-size:clamp(18px,2vw,26px);line-height:1.1;text-align:center}
+.word-list{display:grid;grid-template-rows:repeat(5,minmax(0,1fr));gap:6px;flex:1;min-height:0}
+.word{width:100%;height:100%;min-height:0;padding:2px 4px;border:2px solid var(--green);border-radius:8px;background:var(--cream);color:var(--green);font-family:inherit;font-size:clamp(28px,3.8vw,48px);font-weight:700;line-height:1.05;text-align:center;overflow-wrap:anywhere;cursor:pointer}
+.word:hover,.word:focus-visible{background:#dbe8d9}
+.word.selected{background:#dbe8d9;outline:4px solid #a45b00;outline-offset:0}
+.word.answer{background:#e1f1e5;border-color:#17603a;outline:4px solid #17603a;outline-offset:0}
+.word.incorrect{background:#fff0ec;border-color:#922219;outline-color:#922219}
+.practice-actions{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;margin-top:8px}
+.practice-actions .action-button{margin:0;padding:12px 22px;font-size:clamp(26px,2.8vw,36px);cursor:pointer}
+.practice-actions .secondary{background:transparent;color:var(--green)}
+.back-button{grid-column:1;justify-self:start}
+#check,#next{grid-column:2;grid-row:1;justify-self:center}
+#check{min-width:240px;padding:16px 30px;font-size:clamp(32px,3.4vw,44px)}
+.reset-button{grid-column:3;justify-self:end}
+#score{display:block;min-height:1.4em;margin-top:5px;font-size:clamp(20px,2.4vw,28px)}
+#score:empty{display:none}
+.version{margin-top:auto;font-size:16px;text-align:right}
+#display-info{font-size:14px}
+[hidden]{display:none!important}
+@media(max-width:650px){main{padding:8px}.exercise-sentences{padding:6px 0 0}.exercise-sentences h2,.feedback{font-size:clamp(20px,5.4vw,31px)}.word-bank{gap:4px;max-height:470px;margin:6px 0}.word-column{padding:4px}.word-column h2{min-height:3em;margin-bottom:2px;font-size:clamp(12px,3.2vw,18px)}.word-list{gap:4px}.word{font-size:clamp(18px,4.8vw,27px);padding:1px;line-height:1}.practice-actions .action-button{font-size:20px;padding:8px 10px}#check{min-width:130px;padding:12px;font-size:24px}.version{font-size:13px}}
+html[data-display="compact"] main{padding-top:6px;padding-bottom:6px}
+html[data-display="compact"] .exercise-sentences{padding-top:2px}
+html[data-display="compact"] .word-bank{margin:4px 0}
+html[data-display="compact"] .word-column{padding:6px}
+html[data-display="compact"] .word-column h2{min-height:1.1em;margin-bottom:2px}
+html[data-display="compact"] .word-list{gap:4px}
+html[data-display="compact"] .word{font-size:clamp(22px,3vw,36px)}
+html[data-display="compact"] .practice-actions{margin-top:4px}
+html[data-display="tight"] main{padding:3px 8px}
+html[data-display="tight"] .exercise-sentences{padding:0}
+html[data-display="tight"] .exercise-sentences h2,html[data-display="tight"] .feedback{font-size:clamp(22px,3.8vw,40px)}
+html[data-display="tight"] .word-bank{margin:2px 0;gap:4px}
+html[data-display="tight"] .word-column{padding:3px}
+html[data-display="tight"] .word-column h2{min-height:1.1em;margin-bottom:1px;font-size:clamp(13px,1.7vw,20px)}
+html[data-display="tight"] .word-list{gap:2px}
+html[data-display="tight"] .word{font-size:clamp(18px,3vw,34px)}
+html[data-display="tight"] .practice-actions .action-button{padding:5px 9px;font-size:18px}
+html[data-display="tight"] #check{min-width:120px;padding:7px;font-size:22px}
+html[data-display="tight"] #score{font-size:18px}
+html[data-display="tight"] .version,html[data-display="tight"] #display-info{font-size:11px}
+
