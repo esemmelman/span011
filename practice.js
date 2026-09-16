@@ -17,7 +17,7 @@ function renderNewSet() {
     select.id = label.htmlFor;
     select.name = select.id;
     select.setAttribute('aria-label', `Missing verb in sentence ${index + 1}`);
-    select.add(new Option('—', ''));
+    select.add(new Option('', ''));
     SpanishSentences.shuffle(SpanishSentences.verbs).forEach(verb => select.add(new Option(verb, verb)));
     label.append(select, ` ${question.words[2]}.`);
     const translation = document.createElement('p');
