@@ -8,7 +8,7 @@ SpanishSentences.get('reference', true).forEach(sentence => {
   const usage = document.createElement('span');
   usage.lang = 'en';
   usage.textContent = `(${sentence.verb === 'ser' ? 'Ser' : 'Estar'}: ${sentence.reason})`;
-  heading.append(`${sentence.words[0]} `, mark, ` ${sentence.words[2]}. `, usage);
+  heading.append(`${sentence.words[0]} `, mark, ` ${sentence.words[2]}.`, usage);
   const translation = document.createElement('p');
   translation.textContent = sentence.english;
   article.append(heading, translation);
