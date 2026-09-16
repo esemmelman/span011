@@ -9,6 +9,23 @@ const score = document.querySelector('#score');
 const checkButton = document.querySelector('#check');
 const nextButton = document.querySelector('#next');
 
+function choicesFor(columnIndex) {
+  const question = sentences[currentIndex];
+  const answer = question.words[columnIndex];
+  if (columnIndex === 1) {
+    const serCount = currentIndex % 2 === 0 ? 3 : 2;
+    const counts = { ser: serCount, estar: 5 - serCount };
+    const choices = ['ser', 'estar'].flatMap(verb => {
+      const included = question.verb === verb ? [answer] : [];
+      const others = SpanishSentences.shuffle(sentences.filter(sentence => sentence.verb === verb && sentence.words[1] !== answer).map(sentence => sentence.words[1]));
+      return [...included, ...others.slice(0, counts[verb] - included.length)];
+    });
+    return SpanishSentences.shuffle(choices);
+  }
+  const others = SpanishSentences.shuffle([...new Set(sentences.map(sentence => sentence.words[columnIndex]))].filter(word => word !== answer));
+  return SpanishSentences.shuffle([answer, ...others.slice(0, 4)]);
+}
+
 function renderQuestion() {
   selectedWords = [null, null, null];
   checkButton.hidden = false;
@@ -26,9 +43,7 @@ function renderQuestion() {
   columns.forEach((column, index) => {
     const list = bank.querySelector(`[data-column="${column}"] .word-list`);
     list.replaceChildren();
-    const answer = sentences[currentIndex].words[index];
-    const distractors = SpanishSentences.shuffle([...new Set(sentences.map(sentence => sentence.words[index]))].filter(word => word !== answer)).slice(0, 4);
-    SpanishSentences.shuffle([answer, ...distractors]).forEach(word => {
+    choicesFor(index).forEach(word => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'word';
