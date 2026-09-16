@@ -5,11 +5,12 @@ SpanishSentences.get('reference', true).forEach(sentence => {
   heading.lang = 'es';
   const mark = document.createElement('mark');
   mark.textContent = sentence.words[1];
-  heading.append(`${sentence.words[0]} `, mark, ` ${sentence.words[2]}.`);
+  const usage = document.createElement('span');
+  usage.lang = 'en';
+  usage.textContent = `(${sentence.verb === 'ser' ? 'Ser' : 'Estar'}: ${sentence.reason})`;
+  heading.append(`${sentence.words[0]} `, mark, ` ${sentence.words[2]}. `, usage);
   const translation = document.createElement('p');
   translation.textContent = sentence.english;
-  const reason = document.createElement('small');
-  reason.textContent = `${sentence.verb}: ${sentence.reason.toLowerCase()}`;
-  article.append(heading, translation, reason);
+  article.append(heading, translation);
   reference.append(article);
 });
