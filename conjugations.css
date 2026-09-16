@@ -1,3 +1,8 @@
+.conjugations-header{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;margin-bottom:16px}
+.conjugations-header h1{margin:0}
+.study-button{grid-column:2;padding:12px 20px;border:3px solid var(--green);border-radius:8px;background:var(--green);color:var(--cream);font:700 clamp(20px,2vw,28px) "DM Sans",Arial,sans-serif;cursor:pointer}
+.study-button:hover,.study-button:focus-visible{background:var(--cream);color:var(--green)}
+.study-button:disabled{opacity:.55;cursor:default}
 .conjugation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .verb-card{min-width:0;padding:22px;border:2px solid var(--line);border-radius:10px}
 .verb-card h2{margin:0 0 12px;font-family:Fraunces,Georgia,serif;font-size:clamp(48px,4vw,70px);font-weight:700}
@@ -9,9 +14,11 @@
 .rule-popover ul{margin:8px 0 0;padding-left:1.3em}
 .rule-popover li+li{margin-top:8px}
 .rule-trigger:hover + .rule-popover,.rule-trigger:focus + .rule-popover,.rule-popover:hover{display:block}
-.verb-card table{width:100%;border-collapse:collapse;font-size:clamp(28px,2.6vw,46px);font-weight:700;text-align:left}
+.verb-card table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:clamp(28px,2.6vw,46px);font-weight:700;text-align:left}
+.verb-card th{width:52%}
 .verb-card th,.verb-card td{padding:12px 8px;border-bottom:2px solid var(--line)}
 .verb-card tbody tr:last-child th,.verb-card tbody tr:last-child td{border-bottom:0}
-.verb-card td{font-family:Fraunces,Georgia,serif;font-weight:700}
+.verb-card td{font-family:Fraunces,Georgia,serif;font-size:1.25em;font-weight:700}
 @media(max-width:850px){.conjugation-grid{grid-template-columns:1fr}}
-@media(max-width:650px){.verb-card{padding:12px}.verb-card th,.verb-card td{padding:8px 4px}}
+@media(max-width:650px){.conjugations-header{grid-template-columns:1fr;justify-items:center}.conjugations-header h1,.study-button{grid-column:1}.conjugations-header h1{justify-self:start}.verb-card{padding:12px}.verb-card th,.verb-card td{padding:8px 4px}.verb-card th{width:48%}.verb-card td{font-size:1.12em}}
+@media(max-width:350px){.conjugations-header h1{font-size:32px}}

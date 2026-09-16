@@ -12,3 +12,7 @@
 .home-menu .action-button{display:block;margin:0;padding:16px 24px;font-size:clamp(30px,4vw,50px);text-align:center}
 .home-version{margin-top:auto;padding:20px 0 0;font-size:18px;text-align:right}
 @media(max-width:650px){.home-menu .action-button{padding:13px 12px;font-size:clamp(28px,8vw,40px)}}
+.study-countdown{position:fixed;top:12px;right:20px;z-index:20;padding:6px 10px;border:2px solid var(--green);border-radius:8px;background:var(--cream);font-size:18px}
+.study-countdown[hidden]{display:none}
+html[data-study-active="true"] button,html[data-study-active="true"] select,html[data-study-active="true"] a{opacity:.55;cursor:not-allowed}
+html[data-study-active="true"] a{pointer-events:none}
