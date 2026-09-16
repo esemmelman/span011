@@ -8,11 +8,11 @@ const SpanishSentences = (() => {
   ];
   // Each row is [Spanish complement, English complement, reason].
   const examples = [
-    { ser: [['estudiante', 'a student', 'Identity'], ['de México', 'from Mexico', 'Origin'], ['artista', 'an artist', 'Identity']], estar: [['en casa', 'at home', 'Location'], ['aquí', 'here', 'Location'], ['bien', 'well', 'Condition']] },
-    { ser: [['estudiante', 'a student', 'Identity'], ['de Perú', 'from Peru', 'Origin'], ['artista', 'an artist', 'Identity']], estar: [['en la escuela', 'at school', 'Location'], ['aquí', 'here', 'Location'], ['bien', 'well', 'Condition']] },
-    { ser: [['estudiante', 'a student', 'Identity'], ['de Chile', 'from Chile', 'Origin'], ['doctora', 'a doctor', 'Identity']], estar: [['en el parque', 'in the park', 'Location'], ['aquí', 'here', 'Location'], ['bien', 'well', 'Condition']] },
-    { ser: [['estudiantes', 'students', 'Identity'], ['de Colombia', 'from Colombia', 'Origin'], ['artistas', 'artists', 'Identity']], estar: [['en clase', 'in class', 'Location'], ['aquí', 'here', 'Location'], ['bien', 'well', 'Condition']] },
-    { ser: [['estudiantes', 'students', 'Identity'], ['de España', 'from Spain', 'Origin'], ['artistas', 'artists', 'Identity']], estar: [['en la biblioteca', 'in the library', 'Location'], ['aquí', 'here', 'Location'], ['bien', 'well', 'Condition']] }
+    { ser: [['estudiante', 'a student', 'Identity'], ['de México', 'from Mexico', 'Origin'], ['artista', 'an artist', 'Identity']], estar: [['en casa', 'at home', 'Location'], ['en el museo', 'in the museum', 'Location'], ['en el jardín', 'in the garden', 'Location']] },
+    { ser: [['estudiante', 'a student', 'Identity'], ['de Perú', 'from Peru', 'Origin'], ['artista', 'an artist', 'Identity']], estar: [['en la escuela', 'at school', 'Location'], ['en la cocina', 'in the kitchen', 'Location'], ['en el mercado', 'at the market', 'Location']] },
+    { ser: [['estudiante', 'a student', 'Identity'], ['de Chile', 'from Chile', 'Origin'], ['doctora', 'a doctor', 'Identity']], estar: [['en el parque', 'in the park', 'Location'], ['en la oficina', 'at the office', 'Location'], ['en el café', 'at the café', 'Location']] },
+    { ser: [['estudiantes', 'students', 'Identity'], ['de Colombia', 'from Colombia', 'Origin'], ['artistas', 'artists', 'Identity']], estar: [['en clase', 'in class', 'Location'], ['en el cine', 'at the movies', 'Location'], ['en la playa', 'at the beach', 'Location']] },
+    { ser: [['estudiantes', 'students', 'Identity'], ['de España', 'from Spain', 'Origin'], ['artistas', 'artists', 'Identity']], estar: [['en la biblioteca', 'in the library', 'Location'], ['en el restaurante', 'at the restaurant', 'Location'], ['en la estación', 'at the station', 'Location']] }
   ];
   const all = subjects.flatMap((subject, person) => ['ser', 'estar'].flatMap(verb =>
     examples[person][verb].map(([complement, english, reason], variant) => ({
@@ -20,8 +20,8 @@ const SpanishSentences = (() => {
       words: [subject.es, subject[verb], complement],
       english: `${subject.en} ${subject.am} ${english}.`
     }))));
-  const sectionsKey = 'span011-sections-v1';
-  const historyKey = 'span011-history-v1';
+  const sectionsKey = 'span011-sections-v2';
+  const historyKey = 'span011-history-v2';
   let memory = {};
   let memoryHistory = [];
 
@@ -43,12 +43,13 @@ const SpanishSentences = (() => {
   }
   function makeSet(excluded) {
     for (let attempt = 0; attempt < 100; attempt++) {
-      const serPeople = new Set(shuffle([0, 1, 2, 3, 4]).slice(0, 2 + Math.floor(Math.random() * 2)));
-      const picked = subjects.map((_, person) => {
-        const verb = serPeople.has(person) ? 'ser' : 'estar';
-        return shuffle(all.filter(item => item.id.startsWith(`${person}-${verb}-`) && !excluded.has(item.id)))[0];
+      const usedEndings = new Set();
+      const picked = shuffle(subjects.flatMap((_, person) => ['ser', 'estar'].map(verb => ({ person, verb })))).map(({ person, verb }) => {
+        const item = shuffle(all.filter(candidate => candidate.id.startsWith(`${person}-${verb}-`) && !excluded.has(candidate.id) && !usedEndings.has(candidate.words[2])))[0];
+        if (item) usedEndings.add(item.words[2]);
+        return item;
       });
-      if (picked.every(Boolean) && new Set(picked.map(item => item.words[2])).size === 5) return shuffle(picked);
+      if (picked.every(Boolean)) return shuffle(picked);
     }
     return null;
   }

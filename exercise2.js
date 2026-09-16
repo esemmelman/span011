@@ -26,7 +26,7 @@ function renderQuestion() {
   columns.forEach((column, index) => {
     const list = bank.querySelector(`[data-column="${column}"] .word-list`);
     list.replaceChildren();
-    SpanishSentences.shuffle(sentences.map(sentence => sentence.words[index])).forEach(word => {
+    SpanishSentences.shuffle([...new Set(sentences.map(sentence => sentence.words[index]))]).forEach(word => {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'word';
