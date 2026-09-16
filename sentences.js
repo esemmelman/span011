@@ -87,5 +87,5 @@ const SpanishSentences = (() => {
     save(historyKey, memoryHistory);
     return picked;
   }
-  return { get, shuffle, verbs: ['soy', 'eres', 'es', 'somos', 'son', 'estoy', 'estás', 'está', 'estamos', 'están'] };
+  return { get, shuffle, subjects: subjects.map(({ es, en }) => ({ es, en })), verbs: ['soy', 'eres', 'es', 'somos', 'son', 'estoy', 'estás', 'está', 'estamos', 'están'] };
 })();

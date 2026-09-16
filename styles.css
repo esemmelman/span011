@@ -6,3 +6,8 @@
 @media(max-width:650px){.sentence-list h1 span{white-space:normal}}
 :focus-visible{outline:4px solid #a45b00;outline-offset:3px}
 .usage-guide{padding:12px 0 28px;border-bottom:2px solid var(--line);font-size:clamp(24px,2.6vw,34px);line-height:1.35}
+.home-page{max-width:1000px;margin:0 auto}
+.home-page h1{text-align:center}
+.home-menu{display:grid;gap:12px}
+.home-menu .action-button{display:block;margin:0;padding:16px 24px;font-size:clamp(30px,4vw,50px);text-align:center}
+@media(max-width:650px){.home-menu .action-button{padding:13px 12px;font-size:clamp(28px,8vw,40px)}}
