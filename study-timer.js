@@ -43,7 +43,7 @@ function updateStudyTimer() {
   const remaining = Math.max(0, Math.ceil((studyUntil - Date.now()) / 1000));
   const active = remaining > 0;
   countdown.hidden = !active;
-  if (active) countdown.textContent = `0:${String(remaining).padStart(2, '0')}`;
+  if (active) countdown.textContent = `${Math.floor(remaining / 60)}:${String(remaining % 60).padStart(2, '0')}`;
   setStudyLock(active);
   if (!active) {
     if (intervalId !== null) clearInterval(intervalId);
@@ -56,7 +56,7 @@ function updateStudyTimer() {
 }
 
 function startStudyTimer() {
-  studyUntil = Date.now() + 45_000;
+  studyUntil = Date.now() + 60_000;
   try { sessionStorage.setItem(studyKey, String(studyUntil)); } catch { /* Keep this page's timer. */ }
   updateStudyTimer();
   if (intervalId === null) intervalId = setInterval(updateStudyTimer, 250);
